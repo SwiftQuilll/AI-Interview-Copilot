@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://ai-interview-copilot-backend-ko37.onrender.com",
+  baseURL: "https://ai-interview-copilot-backend-ko37.onrender.com/api",
 });
 
 export default API;
