@@ -1,29 +1,42 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 function Navbar() {
-  return (
-    <nav className="bg-gray-900 text-white px-8 py-4 flex gap-6">
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
 
-      <Link
-        to="/dashboard"
-        className="hover:text-blue-400"
-      >
+  return (
+    <nav
+      className="
+        flex items-center gap-6
+        px-8 py-4
+        bg-white text-black border-b
+        dark:bg-gray-900 dark:text-white dark:border-gray-700
+      "
+    >
+      <Link to="/dashboard" className="hover:text-blue-400">
         Dashboard
       </Link>
 
-      <Link
-        to="/history"
-        className="hover:text-blue-400"
-      >
+      <Link to="/history" className="hover:text-blue-400">
         History
       </Link>
-      <Link
-  to="/interview"
-  className="hover:text-blue-400"
->
-  Interview
-</Link>
 
+      <Link to="/interview" className="hover:text-blue-400">
+        Interview
+      </Link>
+
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="
+          p-2 rounded-lg border
+          hover:bg-gray-200 dark:hover:bg-gray-700
+          border-gray-300 dark:border-gray-700
+        "
+      >
+        {darkMode ? <FaSun /> : <FaMoon />}
+      </button>
     </nav>
   );
 }
